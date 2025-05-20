@@ -1,4 +1,4 @@
-# API para busca e criação de Agendamentos #
+# API para acesso ao sistema de banco de dados da Jaú Pesca #
 
 Para iniciar o servidor da API apenas para a máquina local, use:
 ```
