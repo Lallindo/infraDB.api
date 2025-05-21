@@ -2,7 +2,7 @@
 from fastapi import APIRouter, Query, Path
 from typing import Annotated, List, Union
 from sqlalchemy import update, text, delete
-from app.main import db_dependency
+from main import db_dependency
 
 from models.db_models import VariacoesDB
 from models.schemas import variacoes

@@ -2,7 +2,7 @@
 from fastapi import APIRouter, Query, Path
 from typing import Annotated, List, Union
 from sqlalchemy import update, text
-from app.main import db_dependency
+from main import db_dependency
 
 from models.db_models import ProdutosDB, ProdutoListadoDB
 from models.schemas import produtos, em_kit, em_variacao, produto_listado

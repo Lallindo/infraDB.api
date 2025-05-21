@@ -3,6 +3,7 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship,
 from typing import get_args, Literal, List
 import datetime
 import enum
+from config import database_access
 
 class Base(DeclarativeBase):
     pass
@@ -126,6 +127,6 @@ class EmAgendamentoDB(Base):
     quant_produto: Mapped[int] = mapped_column()
     
     
-connection_string = "postgresql+psycopg2://USUARIO:SENHA@HOST:PORTA/NOME_BANCO"
+connection_string = f"postgresql+psycopg2://{database_access["USER"]}:{database_access["PASSWORD"]}@{database_access["HOST"]}:{database_access["PORT"]}/{database_access["DATABASE_NAME"]}"
 engine = create_engine(connection_string, echo=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

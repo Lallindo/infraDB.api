@@ -14,3 +14,7 @@ Caso não tenha o Uvicorn baixado, use:
 ```
 pip install 'uvicorn[standard]'
 ```
+
+Configurar os dados do seu banco no arquivo "config.py"
+
+A conexão está definida para conectar a bancos PostgreSQL 
