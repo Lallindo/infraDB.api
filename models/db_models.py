@@ -3,7 +3,7 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship,
 from typing import get_args, Literal, List
 import datetime
 import enum
-from config import database_access
+from config import get_conn_string
 
 class Base(DeclarativeBase):
     pass
@@ -31,7 +31,6 @@ class ProdutosDB(Base):
         validate_strings=True
     ))
     ativo_prod: Mapped[bool] = mapped_column(default=True) 
-    
     
 class KitsDB(Base):
     __tablename__ = "kits"
@@ -76,7 +75,6 @@ class CategoriasDB(Base):
     
     id_categoria: Mapped[int] = mapped_column(primary_key=True, autoincrement=True, index=True)
     descritivo_categoria: Mapped[str] = mapped_column(String(100))
-    
 
 class ProdutoListadoDB(Base):
     __tablename__ = "produtoListado"
@@ -126,7 +124,7 @@ class EmAgendamentoDB(Base):
     id_produto_listado: Mapped[int] = mapped_column(ForeignKey("produtoListado.id_produto_listado"))
     quant_produto: Mapped[int] = mapped_column()
     
-    
-connection_string = f"postgresql+psycopg2://{database_access["USER"]}:{database_access["PASSWORD"]}@{database_access["HOST"]}:{database_access["PORT"]}/{database_access["DATABASE_NAME"]}"
+
+connection_string = get_conn_string('mysql')   
 engine = create_engine(connection_string, echo=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

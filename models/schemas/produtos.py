@@ -1,3 +1,4 @@
+from fastapi import Depends
 from pydantic import BaseModel, Field, field_validator
 from typing import List, Optional
 from .response import ResponseBase
@@ -12,7 +13,22 @@ class ProdutoBase(BaseModel):
     tipo_prod: str = Field(default="tipo", description="Tipo do produto, deve ser 'kit', 'simples' ou 'outro'")
 
 class ProdutoCreate(ProdutoBase):
-    pass
+    ativo_prod: bool = Field(default=True, description="Se o produto está ativo no Tiny")
+    
+class ProdutoQuery(BaseModel):
+    id_prod: Optional[int] = Field(default=None, description="Id do produto")
+    id_tiny_prod: Optional[str] = Field(default=None, description="Id do produto no Tiny")
+    descritivo_prod: Optional[str] = Field(default=None, description="Nome do produto") 
+    sku_prod: Optional[str] = Field(default=None, description="SKU do produto")
+    gtin_prod: Optional[str] = Field(default=None, description="GTIN/EAN do produto")
+    preco_prod: Optional[float] = Field(default=None, description="Preço de venda do produto")
+    custo_prod: Optional[float] = Field(default=None, description="Preço de custo do produto")
+    tipo_prod: Optional[str] = Field(default=None, description="Tipo do produto, deve ser 'kit', 'simples' ou 'outro'")
+    ativo_prod: Optional[bool] = Field(default=None, description="Se o produto está ativo no Tiny")
+
+    @classmethod
+    def as_query(cls):
+        return Depends(cls)
 
 class ProdutoResponse(ProdutoBase):
     id_prod: int = Field(description="Id do produto")
