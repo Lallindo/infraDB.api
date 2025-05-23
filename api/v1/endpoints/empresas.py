@@ -4,7 +4,7 @@ from typing import Annotated, List, Union
 from sqlalchemy import update, text, delete
 from main import db_dependency
 
-from models.db_models import EmpresasDB, VendeEmDB, MarketplacesDB
+from models.db_models import EmpresasDB, VendeEmDB
 from models.schemas import empresas, vende_em
 
 router = APIRouter(prefix="/empresas", tags=["Empresas"])

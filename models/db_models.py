@@ -125,6 +125,6 @@ class EmAgendamentoDB(Base):
     quant_produto: Mapped[int] = mapped_column()
     
 
-connection_string = get_conn_string('mysql')   
+connection_string = get_conn_string('postgresql')   
 engine = create_engine(connection_string, echo=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

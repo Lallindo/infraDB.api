@@ -1,8 +1,8 @@
-_USER = 'root'
-_PASSWORD = 'root'
-_HOST = 'localhost'
-_PORT = '3306'
-_DATABASE_NAME = 'produtos_tiny'
+_USER = ''
+_PASSWORD = ''
+_HOST = ''
+_PORT = ''
+_DATABASE_NAME = ''
 _driver = ''
 
 def get_conn_string(db_driver: str) -> str:
