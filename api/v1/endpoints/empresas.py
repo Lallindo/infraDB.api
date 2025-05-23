@@ -1,5 +1,5 @@
 # Imports de todos os endpoints
-from fastapi import APIRouter, Query, Path
+from fastapi import APIRouter, Query
 from typing import Annotated, List, Union
 from sqlalchemy import update, text, delete
 from main import db_dependency
